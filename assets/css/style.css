@@ -1,0 +1,402 @@
+body {
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  color: #333;
+  line-height: 1.6; /*Межстрочный отступ */
+  margin: 0;
+}
+*,
+*:before,
+*:after {
+  box-sizing: border-box; /*При падингах,бордерахзначение шырины елемента не меняеться*/
+}
+h1h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+/*Контейнер моно*/
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto; /*Центрирование по горизонтале блока с извесной шириной  */
+}
+
+/*Header*/
+.header {
+  width: 100%;
+  padding-top: 30px;
+
+  position: absolute; /*Другие елементи какбудто не видят єтот блок, т.е налажуеться на другие блоки */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+.header_logo {
+  font-size: 30px;
+  font-weight: bold;
+  color: #fff;
+}
+.header_inner {
+  /*То что находиться в средине блока класа header_inner
+	займут крайние позиции */
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /*выравнивает флекс-элементы внутри контейнера*/
+}
+
+/*Nav*/
+.nav {
+  font-size: 14px;
+  text-transform: uppercase; /*Все с большой букви*/
+  min-width: 400px;
+}
+.nav_link {
+  display: inline-block;
+  vertical-align: top; /*Виравнивает строчную область что в верхнем крае строки и будет надпись*/
+  margin: 0 10px; /*Справа и слева*/
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+  transition: opacity 0.1s linear;
+}
+.nav_link:hover {
+  color: #fce38a;
+  transition: color 2s linear;
+}
+.nav_link:after {
+  content: "";
+
+  opacity: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #fce38a;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  display: none;
+  transition: opacity 0.5s linear;
+}
+.nav_link:hover:after,
+.nav_link.active:after {
+  display: block;
+  opacity: 1; /*прозрачность */
+}
+
+.nav_link.active {
+  color: #fce38a;
+}
+
+/*Intro */
+.intro {
+  width: 100%;
+  height: 100vh;
+
+  /*Для виравнивания по центру */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background: url("../images/intro.jpg") center no-repeat;
+  -webkit-background-size: cover;
+  background-size: cover; /*Ширина и высота картинки равняеться ширине висоте блока т.е вся площа екрана */
+}
+
+.intro_inner {
+  /*Хотим сделать название в блоке немножко меньше */
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+  text-align: center;
+}
+.intro_title {
+  color: #eee;
+  font-size: 150px;
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 1;
+  margin: 0;
+}
+.intro_title:after {
+  /*Полоска*/
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #fff;
+  margin: 60px auto 60px; /*Сверху 60 , снизу,слева -авто, снизу-0 */
+}
+.intro_suptitle {
+  margin-bottom: 20px;
+  font-size: 72px;
+  color: #fff;
+  font-family: "Kaushan Script", cursive;
+  margin: 0;
+}
+
+/*Button	*/
+.btn {
+  display: inline-block;
+  vertical-align: top;
+  border: 3px solid #fff;
+  padding: 8px 30px;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 1s linear, color 1s linear;
+}
+.btn:hover {
+  background: #eee;
+  color: #333;
+}
+
+/*Slider*/
+.intro_slider {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+.slider_item {
+  width: 24%;
+  font-size: 20px;
+  color: #fff;
+  position: relative;
+  /*Чтоб могли позиционировать полоску*/
+  text-transform: uppercase;
+  padding: 20px 0;
+  border-top: 3px solid #fff;
+  opacity: 0.7;
+}
+.slider_num {
+  font-size: 24px;
+  font-weight: 700;
+}
+.intro_slider.active {
+  opacity: 1;
+}
+
+.slider_item.active:before {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 3px;
+
+  background-color: #f38181;
+
+  position: absolute;
+  top: -3px;
+  left: 0;
+  z-index: 1;
+}
+.slider_inner {
+  display: flex;
+  justify-content: space-between;
+}
+
+/*Section*/
+section {
+  padding: 90px 0px;
+  margin: 0;
+}
+header {
+  text-align: center;
+}
+.sup_title {
+  font-size: 24px;
+  font-family: "Kaushan Script", cursive;
+}
+header h1 {
+  padding-top: 0px;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+}
+h1:after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 60px;
+  background-color: #f38181;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+.some_text {
+  margin-top: 42px;
+}
+
+/*Some_img*/
+/* #1  */
+.about {
+  display: flex;
+  justify-content: space-between;
+}
+/*  #4  */
+.conteiner_ {
+  width: 380px;
+  background-color: #95e1d3;
+  position: relative; /*Для текста*/
+}
+/*  #3  */
+.conteiner_:hover .img_item img {
+  opacity: 0.1;
+}
+
+/*  #2 */
+.img_item {
+  background: linear-gradient(to bottom, #f38181, #fce38a);
+  transition: transform 1s linear;
+}
+/*  #5  */
+.img_item img {
+  display: block; /*Чтоб не было нижней полоски*/
+  transition: opacity 1s linear;
+}
+/*  #6  */
+.conteiner_:hover .img_item {
+  transform: translate3d(-10px, -10px, 0);
+}
+
+/*Statistics*/
+.statistics {
+  background-color: aquamarine;
+}
+
+.line_statistics {
+  display: flex;
+  justify-content: space-around;
+}
+.block_item {
+  display: block;
+  padding-top: 40px;
+  border-left: 2px solid #b5eae0;
+  color: #fff;
+  font-size: 72px;
+  text-align: center;
+  padding-left: 80px;
+  font-weight: bold;
+}
+.block_item:last-child {
+  border-right: 2px solid #b5eae0;
+  padding-right: 60px;
+}
+.stat_text {
+  text-transform: uppercase;
+  font-size: 14px;
+  padding-bottom: 50px;
+}
+
+
+
+.services{
+	display: flex;
+}
+.service_item{
+	flex: 1 1 0;
+	position: relative;
+	padding-left: 70px;
+}
+.service_img{
+	position: absolute;
+	top:0;
+	left:0;
+}
+
+hr{
+	display: block;
+	width: 100%;
+	background-color: #e5e5e5;
+
+	height: 1px;
+	
+	margin: 40px 0 50px;
+	
+	border: 0;
+}
+
+
+
+.wiew{
+	background: url("../images/laptop/background_dg.jpg")  center no-repeat;
+		background-size: cover;
+		padding-bottom: 0;
+
+}
+
+.block_device{
+	max-width: 600px;
+	width: 100%;
+	margin:0 auto;
+
+   position: relative;
+}
+
+.iphone{
+	position: absolute;
+	bottom: -105px;
+	right:0;
+	z-index: 1;
+
+}
+.laptop{
+	margin: 0;
+	padding:0;
+	display: block;
+}
+
+
+
+
+
+
+
+
+/*  After Iphone*/
+.main_bl_after_ipone{
+  margin:  auto;
+  max-width:1200px ;
+  max-height: 300px;
+  margin-top: 110px;
+  text-align: center;
+}
+.First_chapter, .Second_chapter{
+  max-width: 300px;
+  margin: auto;
+}
+
+.First_chapter{
+    font-family: "Kaushan Script", cursive;
+  font-weight: 100;
+}
+.Second_chapter{
+  color: black;
+  font-family: "Montserrat", sans-serif;
+font-size: 24px;
+}
+.Second_chapter::after{
+  content: "";
+  display: block;
+  height: 3px;
+  width: 60px;
+  background-color: #f38181;
+  margin:  auto;
+
+
+}
+.main_bl_after_ipone p{
+  max-width: 980px;
+  max-height: 50px;
+  margin: 40px auto;
+  color: #333;
+}
+
+
+
